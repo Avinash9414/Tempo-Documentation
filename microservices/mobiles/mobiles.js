@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv").config();
-const Mobile = require("../models/mobile.js");
+const Mobile = require("./mobile.js");
 app.use(bodyParser.json())
 
 const startServer = async () => {

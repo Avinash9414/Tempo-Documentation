@@ -1,0 +1,9 @@
+mobiles/.env
+customers/.env
+orders/.env
+mobiles/package-lock.json
+customers/package-lock.json
+orders/package-lock.json
+mobiles/node_modules
+customers/node_modules
+orders/node_modules

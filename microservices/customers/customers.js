@@ -3,7 +3,7 @@ const app = express()
 const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv").config();
-const Customer = require('../models/customer.js');
+const Customer = require('./customer.js');
 app.use(bodyParser.json())
 
 const startServer = async () => {
