@@ -5,6 +5,7 @@ const bodyParser = require("body-parser")
 const axios = require("axios")
 const dotenv = require("dotenv").config();
 const Order = require("./order");
+const { startMetricsServer } = require("./metrics")
 app.use(bodyParser.json())
 
 const startServer = async () => {
@@ -85,6 +86,8 @@ const startServer = async () => {
                 // throw error;
             })
         })
+
+        startMetricsServer();
 
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on http://localhost:${process.env.PORT}`);

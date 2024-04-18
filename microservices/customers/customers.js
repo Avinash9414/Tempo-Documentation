@@ -4,6 +4,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv").config();
 const Customer = require('./customer.js');
+const { startMetricsServer } = require("./metrics.js");
 app.use(bodyParser.json())
 
 const startServer = async () => {
@@ -80,6 +81,7 @@ const startServer = async () => {
 
         })
 
+        startMetricsServer();
 
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on http://localhost:${process.env.PORT}`);

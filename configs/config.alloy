@@ -1,0 +1,55 @@
+prometheus.scrape "metrics_test_local_agent" {
+    targets = [{
+        __address__ = "192.168.0.107:4551",
+        instance = "one",
+        job      = "customerservice",
+    },
+    {
+      __address__ = "192.168.0.107:4546",
+      instance="two",
+      job = "mobileservice",
+
+    },
+    {
+      __address__ = "192.168.0.107:4556",
+      instance= "three",
+      job = "orderservice",
+    }]
+    forward_to      = [prometheus.remote_write.metrics_test.receiver]
+    job_name        = "nodejsapps"
+    scrape_interval = "15s"
+}
+
+prometheus.remote_write "metrics_test" {
+    endpoint {
+        name = "test-3a2a1b"
+        url  = "http://192.168.0.107:9090/api/v1/write"
+        
+
+        queue_config { }
+
+        metadata_config { }
+    }
+}
+
+
+otelcol.receiver.otlp "default" {
+  http {}
+  grpc {}
+
+  output {
+    traces  = [otelcol.processor.batch.default.input]
+  }
+}
+
+otelcol.processor.batch "default" {
+  output {
+    traces  = [otelcol.exporter.otlp.default.input]
+  }
+}
+
+otelcol.exporter.otlp "default" {
+  client {
+    endpoint = "tempo:4317"
+  }
+}
