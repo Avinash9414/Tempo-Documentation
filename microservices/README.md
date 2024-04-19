@@ -18,7 +18,7 @@ Login to your MongoDB Atlas Account and create a cluster. After creating a clust
 > [!NOTE]
 > Store this connection string in a notepad as we will use it to set up the database connection in our application.
 
-THe Connection String will look like this "mongodb+srv://'username':'password'@'clusterName'.i30sge8.mongodb.net"
+The Connection String will look like this "mongodb+srv://'username':'password'@'clusterName'.i30sge8.mongodb.net"
 
 # Configuration Instructions for all the microservices
 
@@ -31,7 +31,7 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
 > [!NOTE]
 >   - The PORT variable is used to set the port number for the service.
 >   - The MONGO_URI variable is used to set the mongodb connection string. Define it with the connection string you copied earlier.
->   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running.
+>   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running. Define it with the IP address of the machine where the services are running.
 
 
 To get the ip address of your system run the following command:
