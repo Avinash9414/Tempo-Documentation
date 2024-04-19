@@ -28,7 +28,7 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
     - MONGO_URI
     - IP_ADDRESS
 
-    > [!NOTE]
+> [!NOTE]
     > The PORT variable is used to set the port number for the service.
     > The MONGO_URI variable is used to set the mongodb connection string. Define it with the connection string you copied earlier.
     > The IP_ADDRESS variable is used to set the IP address of the machine where the services are running.
