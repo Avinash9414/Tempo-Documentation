@@ -9,7 +9,7 @@ Steps to run the micro-service setup.
 
 Login to your MongoDB Atlas Account and create a cluster. After creating a cluster, navigate to the Database section and click 'Connect'.
 
-### Database Connection Steps:
+## Database Connection Steps:
 
 1. Enter the database username and password.
 2. Choose a connection method and select the driver as Node.js.
@@ -20,7 +20,7 @@ Login to your MongoDB Atlas Account and create a cluster. After creating a clust
 
 The Connection String will look like this "mongodb+srv://'username':'password'@'clusterName'.i30sge8.mongodb.net"
 
-### Configuration Instructions for all the microservices
+## Configuration Instructions for all the microservices
 
 **Create a .env file for all three services which includes the following variables:**
 
@@ -42,7 +42,7 @@ The Connection String will look like this "mongodb+srv://'username':'password'@'
 >   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running. Define it with the IP address of the machine where the services are running.
 
 
-    To get the ip address of your system run the following command:
+To get the ip address of your system run the following command:
 
 ```bash
 ipconfig
