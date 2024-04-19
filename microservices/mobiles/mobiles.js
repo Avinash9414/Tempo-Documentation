@@ -4,7 +4,7 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const dotenv = require("dotenv").config();
 const Mobile = require("./mobile.js");
-const { startMetricsServer } = require("./metrics.js");
+const { prometheus, middleware } = require("./metrics")
 app.use(bodyParser.json())
 
 const startServer = async () => {
@@ -13,6 +13,8 @@ const startServer = async () => {
         await mongoose.connect(process.env.mongo_url).then(() => {
             console.log("Database connected")
         })
+
+        app.use(middleware);
         app.get('/', (req, res) => {
             res.send("Hello");
 
@@ -80,7 +82,11 @@ const startServer = async () => {
 
         })
 
-        startMetricsServer();
+        app.get('/metrics', async (req, res) => {
+            const metrics = await prometheus.register.metrics(); // Ensure this call returns a string, not a Promise
+            res.set('Content-Type', prometheus.register.contentType);
+            res.end(metrics); // Send the metrics string directly, without using Promises
+          });
 
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on http://localhost:${process.env.PORT}`);

@@ -28,3 +28,5 @@ const sdk = new opentelemetry.NodeSDK({
   instrumentations: [getNodeAutoInstrumentations()],
 });
 sdk.start();
+
+

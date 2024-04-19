@@ -1,18 +1,18 @@
 prometheus.scrape "metrics_test_local_agent" {
     targets = [{
-        __address__ = "192.168.0.107:4551",
-        instance = "one",
+        __address__ = "customers:4550",
+        instance = "customer",
         job      = "customerservice",
     },
     {
-      __address__ = "192.168.0.107:4546",
-      instance="two",
+      __address__ = "mobiles:4545",
+      instance="mobile",
       job = "mobileservice",
 
     },
     {
-      __address__ = "192.168.0.107:4556",
-      instance= "three",
+      __address__ = "orders:4555",
+      instance= "order",
       job = "orderservice",
     }]
     forward_to      = [prometheus.remote_write.metrics_test.receiver]

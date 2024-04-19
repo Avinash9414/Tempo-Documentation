@@ -1,44 +1,55 @@
-const express = require('express');
-const client = require('prom-client');
+const prometheus = require('prom-client');
 
-const app = express();
+const collectDefaultMetrics = prometheus.collectDefaultMetrics;
+collectDefaultMetrics();
 
-function startMetricsServer() {
-    const collectDefaultMetrics = client.collectDefaultMetrics;
-    collectDefaultMetrics();
+const httpRequestDurationMicroseconds = new prometheus.Histogram({
+  name: 'http_request_duration_ms',
+  help: 'Duration of HTTP requests in milliseconds',
+  labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.1, 5, 15, 50, 100, 500],
+});
 
-    app.get('/metrics', async (req, res) => {
-        res.set("Content-Type", client.register.contentType);
-        return res.send(await client.register.metrics())
-    });
+const httpRequestDurationSeconds = new prometheus.Histogram({
+  name: 'http_request_duration_seconds',
+  help: 'Duration of HTTP requests in seconds',
+  labelNames: ['method', 'route', 'status_code'],
+  buckets: [0.0001, 0.005, 0.015, 0.05, 0.1, 0.5], // Adjusted for seconds
+});
 
-    const httpRequestCounter = new client.Counter({
-        name: 'http_requests_total',
-        help: 'Total number of HTTP requests',
-        labelNames: ['method', 'endpoint']
-    });
 
-    const requestDurationHistogram = new client.Histogram({
-        name: 'http_request_duration_seconds',
-        help: 'Duration of HTTP requests in seconds',
-        labelNames: ['route'],
-        buckets: [0.1, 0.5, 1, 2, 5],
-    });
+const requestCounter = new prometheus.Counter({
+  name: 'http_requests_total',
+  help: 'Total number of HTTP requests',
+  labelNames: ['method', 'route', 'status_code'],
+});
 
-    // Middleware to count HTTP requests
-    app.use((req, res, next) => {
-        // const timestamp = new Date().toISOString(); // Current UTC time
-        httpRequestCounter.inc({ method: req.method, endpoint: req.path });
-        // Observation for request duration
-        requestDurationHistogram.observe({ route: req.path }, 0.5); // 0.5 seconds
-        next();
-    });
+// Middleware to measure request duration and count requests
+function middleware(req, res, next) {
+  const start = process.hrtime();
+  res.on('finish', () => {
+    const duration = process.hrtime(start);
+    const durationInSeconds = duration[0] + duration[1] / 1e9;
+    const route = req.route ? req.route.path : 'unknown';
+    const statusCode = res.statusCode || 500;
 
-    app.listen(4551, () => {
-        console.log("Metrics server started at 4551")
-    });
+    const durationInMicroseconds = (duration[0] * 1e6 + duration[1] / 1e3) || 0;
+    httpRequestDurationMicroseconds
+      .labels(req.method, route, statusCode)
+      .observe(durationInMicroseconds);
+
+      httpRequestDurationSeconds
+      .labels(req.method, route, statusCode)
+      .observe(durationInSeconds);
+
+
+    requestCounter.labels(req.method, route, statusCode).inc();
+  });
+  next();
 }
 
 module.exports = {
-    startMetricsServer
+  prometheus,
+  middleware,
 };
+

@@ -5,8 +5,9 @@ const bodyParser = require("body-parser")
 const axios = require("axios")
 const dotenv = require("dotenv").config();
 const Order = require("./order");
-const { startMetricsServer } = require("./metrics")
+const { prometheus, middleware } = require("./metrics")
 app.use(bodyParser.json())
+// const { countRequests } = require('./instrumentation');
 
 const startServer = async () => {
     try {
@@ -15,6 +16,8 @@ const startServer = async () => {
             console.log("Database connected")
 
         })
+        app.use(middleware);
+
         app.get('/', (req, res) => {
             res.send("this is our main route")
 
@@ -53,14 +56,12 @@ const startServer = async () => {
         app.get('/order/:id', async (req, res) => {
 
             await Order.findById(req.params.id).then((order) => {
-
-                console.log(order)
                 if (order) {
 
                     //console.log("http://ip_address:5555/customer/"+orders.CustomerID);
                     // res.json(orders);
 
-                    axios.get("http://localhost:4550/customer/" + order.CustomerID).then((response) => {
+                    axios.get("http://customers:4550/customer/" + order.CustomerID).then((response) => {
 
                         console.log("response from then", response.data);
                         const combinedData = {
@@ -68,17 +69,12 @@ const startServer = async () => {
                             customer: response.data
                         };
                         res.json(combinedData);
-
-                        // axios.get("http://localhost:4550/customer/" + orders.CustomerID).then((response) => {
-
-
-                        // })
+                    }).catch((error)=>{
+                        res.send(error);
                     })
                 }
-                // res.send("quick resposne")
-                //res.json(orders)
                 else
-                    res.sendStatus(404)
+                    res.send("Order not found");
             }).catch(error => {
                 res.send('id doesnt exist')
                 // console.log(error);
@@ -87,7 +83,12 @@ const startServer = async () => {
             })
         })
 
-        startMetricsServer();
+        // startMetricsServer();
+        app.get('/metrics', async (req, res) => {
+            const metrics = await prometheus.register.metrics(); // Ensure this call returns a string, not a Promise
+            res.set('Content-Type', prometheus.register.contentType);
+            res.end(metrics); // Send the metrics string directly, without using Promises
+          });
 
         app.listen(process.env.PORT, () => {
             console.log(`Server is running on http://localhost:${process.env.PORT}`);
