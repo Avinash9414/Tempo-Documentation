@@ -20,13 +20,20 @@ Login to your MongoDB Atlas Account and create a cluster. After creating a clust
 
 The Connection String will look like this "mongodb+srv://'username':'password'@'clusterName'.i30sge8.mongodb.net"
 
-# Configuration Instructions for all the microservices
+### Configuration Instructions for all the microservices
 
 1. Create a .env file for all three services which includes the following variables:
 
     - PORT
     - MONGO_URI
     - IP_ADDRESS
+
+The .env file should look like this:
+```
+    MONGO_URI='mongodb+srv://<username>:<password>@cluster0.pghegxv.mongodb.net/<databasename>?retryWrites=true&w=majority&appName=Cluster0'
+    PORT=4550
+    IP_ADDRESS='<ip_addr>'
+```
 
 > [!NOTE]
 >   - The PORT variable is used to set the port number for the service.
