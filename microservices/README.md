@@ -46,9 +46,12 @@ For simplicity follow the PORT numbers I have used and they are :
 - 4555 : For orders service
 
 
-> [!NOTE]
+> [!IMPORTANT]
 > If you decide to change the PORT numbers then please make sure to change them in:
 > 1. docker-compose file in the root directory
 > 2. config.alloy under /configs folder in root directory
+
+
+## You are all set with the microservices
 
 
