@@ -15,7 +15,7 @@ Login to your MongoDB Atlas Account and create a cluster. After creating a clust
 2. Choose a connection method and select the driver as Node.js.
 3. You will see a connection string below; copy it and replace `<password>` with the password for the database user.
 
-**Note:**
+> [!NOTE]
 > Store this connection string in a notepad as we will use it to set up the database connection in our application.
 
 THe Connection String will look like this "mongodb+srv://'username':'password'@'clusterName'.i30sge8.mongodb.net"
@@ -35,17 +35,19 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
 
     To get the ip address of your system run the following command:
     ```bash
+
     ipconfig
-    ``` 
+    
+    ```
 
     For simplicity follow the PORT numbers I have used and they are :
     - 4545 : For mobiles service
     - 4550 : For customers service
     - 4555 : For orders service
 
-    > [!NOTE]
-    > If you decide to change the PORT numbers then please make sure to change them in:
-    > 1. docker-compose file in the root directory
-    > 2. config.alloy under /configs folder in root directory
+> [!NOTE]
+> If you decide to change the PORT numbers then please make sure to change them in:
+> 1. docker-compose file in the root directory
+> 2. config.alloy under /configs folder in root directory
 
 
