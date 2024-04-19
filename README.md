@@ -14,23 +14,41 @@ Make sure you have Docker and Docker Compose installed on your machine.
 
 ## Setup and Usage
 
-1. Clone this repository:
+1. **Clone this repository**:
 
    ```bash
    git clone https://github.com/Avinash9414/Tempo-Documentation.git
    cd Tempo-Documentation
    ```
-2. Configure the microservices.
-    - Please refer to the README.md files in the `/microservices` folder for instructions on how to configure the microservices.
-    
-3. Start the services:
+
+2. **Configure the microservices**:
+    - Please refer to the README.md file in the `/microservices` folder for instructions on how to configure the microservices.
+
+3. **Configure Tempo as per needs**:
+    - Please refer to the README.md file in the `/configs` folder for instructions on how to configure Tempo.
+
+4. **Start the services**:
 
    ```bash
    docker-compose build
    docker-compose up -d
    ```
-4. Open Grafana in your browser at http://localhost:3000 and login with the following credentials:
 
-   - Username: `admin`
-   - Password: `admin`
+5. **Open Grafana in your browser at http://localhost:3000 and login with the following credentials**:
+
+    - Username: `admin`
+    - Password: `admin`
+
+6. **Navigate to Dashboards tab**:
+
+    You will find 2 dashboards:
+    - `NodeJS Application Dashboard for Metrics`
+    - `Traces Dashboard`
+    The first dashboard shows the metrics for the three microservices.
+    The second dashboard shows the traces for the three microservices with a service graph view.
+
+    **You can use these dashboards to monitor the performance of the three microservices.**
+
+## END
+
 
