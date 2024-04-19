@@ -1,6 +1,23 @@
-# TEMPO DOCUMENTATION
+# GRAFANA TEMPO DOCUMENTATION
 
 This repository contains a setup for monitoring three microservices using Grafana, Tempo, Prometheus and Docker Compose.
+
+## Grafana Tempo
+
+Grafana Tempo is an open source, easy-to-use, and high-scale distributed tracing backend. Tempo is cost-efficient, requiring only object storage to operate, and is deeply integrated with Grafana, Prometheus, and Loki. Tempo can ingest common open source tracing protocols, including Jaeger, Zipkin, and OpenTelemetry.
+
+### Why Grafana Tempo?
+
+**Built for massing scale**: The only dependency is object storage which provides affordable long term storage of traces
+**Cost-effective**: Not indexing the traces makes it possible to store orders of magnitude more trace data for the same cost
+**Strong integration with open source tools**: Compatible with open source tracing protocols
+
+### How does Tempo work?
+
+<img src="./images/how-does-tempo-work.png"/>
+
+<img src="./images/getting-started.png"/>
+
 
 ## Folder Structure
 
@@ -48,7 +65,7 @@ Make sure you have Docker and Docker Compose installed on your machine.
     - The first dashboard shows the metrics for the three microservices.
     - The second dashboard shows the traces for the three microservices with a service graph view.
 
-        **You can use these dashboards to monitor the performance of the three microservices.**
+    **You can use these dashboards to monitor the performance of the three microservices.**
 
 ## END
 
