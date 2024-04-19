@@ -41,14 +41,14 @@ Make sure you have Docker and Docker Compose installed on your machine.
 
 6. **Navigate to Dashboards tab**:
 
-- You will find 2 dashboards:
-    - `NodeJS Application Dashboard for Metrics`
-    - `Traces Dashboard`
-    
-- The first dashboard shows the metrics for the three microservices.
-- The second dashboard shows the traces for the three microservices with a service graph view.
+    - You will find 2 dashboards:
+        - `NodeJS Application Dashboard for Metrics`
+        - `Traces Dashboard`
+        
+    - The first dashboard shows the metrics for the three microservices.
+    - The second dashboard shows the traces for the three microservices with a service graph view.
 
-    **You can use these dashboards to monitor the performance of the three microservices.**
+        **You can use these dashboards to monitor the performance of the three microservices.**
 
 ## END
 
