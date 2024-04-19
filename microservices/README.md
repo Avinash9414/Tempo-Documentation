@@ -34,7 +34,7 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
 >   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running.
 
 
-    To get the ip address of your system run the following command:
+To get the ip address of your system run the following command:
 
         ```bash
 
@@ -42,10 +42,11 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
 
         ```
 
-    For simplicity follow the PORT numbers I have used and they are :
-    - 4545 : For mobiles service
-    - 4550 : For customers service
-    - 4555 : For orders service
+For simplicity follow the PORT numbers I have used and they are :
+- 4545 : For mobiles service
+- 4550 : For customers service
+- 4555 : For orders service
+
 
 > [!NOTE]
 > If you decide to change the PORT numbers then please make sure to change them in:
