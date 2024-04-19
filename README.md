@@ -56,7 +56,15 @@ Make sure you have Docker and Docker Compose installed on your machine.
     - Username: `admin`
     - Password: `admin`
 
-6. **Navigate to Dashboards tab**:
+6. **Navigate to Data Sources tab under the Connections tab**:
+
+    - You will find 2 data sources:
+        - `prometheus`
+        - `tempo`
+    - Click on the `prometheus` data source and configure the connection url. Replace your IP address with `<YOUR_IP_ADDRESS>`
+    - Click on the `tempo` data source and configure the connection url. Replace your IP address with `<YOUR_IP_ADDRESS>`
+
+7. **Navigate to Dashboards tab**:
 
     - You will find 2 dashboards:
         - `NodeJS Application Dashboard for Metrics`
