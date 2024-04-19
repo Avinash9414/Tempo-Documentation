@@ -29,9 +29,9 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
     - IP_ADDRESS
 
 > [!NOTE]
-    > The PORT variable is used to set the port number for the service.
-    > The MONGO_URI variable is used to set the mongodb connection string. Define it with the connection string you copied earlier.
-    > The IP_ADDRESS variable is used to set the IP address of the machine where the services are running.
+>   - The PORT variable is used to set the port number for the service.
+>   - The MONGO_URI variable is used to set the mongodb connection string. Define it with the connection string you copied earlier.
+>   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running.
 
     To get the ip address of your system run the following command:
     ```bash
