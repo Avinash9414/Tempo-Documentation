@@ -14,9 +14,9 @@ Grafana Tempo is an open source, easy-to-use, and high-scale distributed tracing
 
 ### How does Tempo work?
 
-<img src="./images/how-does-tempo-work.png"/>
+<img src="./images/how-does-tempo-work.jpg"/>
 
-<img src="./images/getting-started.png"/>
+<img src="./images/getting-started.jpg"/>
 
 
 ## Folder Structure
