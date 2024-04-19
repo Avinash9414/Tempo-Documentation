@@ -36,11 +36,9 @@ THe Connection String will look like this "mongodb+srv://'username':'password'@'
 
 To get the ip address of your system run the following command:
 
-        ```bash
-
-        ipconfig
-
-        ```
+```bash
+ipconfig
+```
 
 For simplicity follow the PORT numbers I have used and they are :
 - 4545 : For mobiles service
