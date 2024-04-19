@@ -22,18 +22,19 @@ The Connection String will look like this "mongodb+srv://'username':'password'@'
 
 ### Configuration Instructions for all the microservices
 
-1. Create a .env file for all three services which includes the following variables:
+**Create a .env file for all three services which includes the following variables:**
 
-    - PORT
-    - MONGO_URI
-    - IP_ADDRESS
+- PORT
+- MONGO_URI
+- IP_ADDRESS
 
-The .env file should look like this:
-```
-    MONGO_URI='mongodb+srv://<username>:<password>@cluster0.pghegxv.mongodb.net/<databasename>?retryWrites=true&w=majority&appName=Cluster0'
-    PORT=4550
-    IP_ADDRESS='<ip_addr>'
-```
+    The .env file should look like this:
+    - Example:
+    ```
+        MONGO_URI='mongodb+srv://<username>:<password>@cluster0.pghegxv.mongodb.net/<databasename>?retryWrites=true&w=majority&appName=Cluster0'
+        PORT=4550
+        IP_ADDRESS='<ip_addr>'
+    ```
 
 > [!NOTE]
 >   - The PORT variable is used to set the port number for the service.
@@ -41,7 +42,7 @@ The .env file should look like this:
 >   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running. Define it with the IP address of the machine where the services are running.
 
 
-To get the ip address of your system run the following command:
+    To get the ip address of your system run the following command:
 
 ```bash
 ipconfig
