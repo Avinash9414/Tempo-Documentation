@@ -1,3 +1,4 @@
+const dotenv = require("dotenv").config();
 const opentelemetry = require('@opentelemetry/sdk-node');
 const {
   getNodeAutoInstrumentations,
@@ -14,13 +15,13 @@ const sdk = new opentelemetry.NodeSDK({
   serviceName: 'mobileservice', // Set the service name here
   traceExporter: new OTLPTraceExporter({
     // optional - default url is http://localhost:4318/v1/traces
-    url: 'http://192.168.0.107:4318/v1/traces',
+    url: 'http://'+process.env.IP_ADDRESS+':4318/v1/traces',
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
   metricReader: new PeriodicExportingMetricReader({
     exporter: new OTLPMetricExporter({ 
-      url: 'http://192.168.0.107:4318/v1/metrics',// url is optional and can be omitted - default is http://localhost:4318/v1/metrics
+      url: 'http://'+process.env.IP_ADDRESS+':4318/v1/metrics',// url is optional and can be omitted - default is http://localhost:4318/v1/metrics
       headers: {}, // an optional object containing custom headers to be sent with each request
       concurrencyLimit: 1, // an optional limit on pending requests
     }),

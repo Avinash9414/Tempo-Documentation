@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 const startServer = async () => {
     try {
 
-        await mongoose.connect(process.env.mongo_url).then(() => {
+        await mongoose.connect(process.env.MONGO_URI).then(() => {
             console.log("Database connected")
         })
 

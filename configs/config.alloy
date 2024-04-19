@@ -1,17 +1,17 @@
 prometheus.scrape "metrics_test_local_agent" {
     targets = [{
-        __address__ = "customers:4550",
+        __address__ = "customers:4550", //Replace 4550 with PORT number you have chosen in your .env file
         instance = "customer",
         job      = "customerservice",
     },
     {
-      __address__ = "mobiles:4545",
+      __address__ = "mobiles:4545", //Replace 4545 with PORT number you have chosen in your .env file
       instance="mobile",
       job = "mobileservice",
 
     },
     {
-      __address__ = "orders:4555",
+      __address__ = "orders:4555", //Replace 4555 with PORT number you have chosen in your .env file
       instance= "order",
       job = "orderservice",
     }]
@@ -23,7 +23,7 @@ prometheus.scrape "metrics_test_local_agent" {
 prometheus.remote_write "metrics_test" {
     endpoint {
         name = "test-3a2a1b"
-        url  = "http://192.168.0.107:9090/api/v1/write"
+        url  = "http://prometheus:9090/api/v1/write"
         
 
         queue_config { }

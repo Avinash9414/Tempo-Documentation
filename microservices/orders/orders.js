@@ -7,12 +7,11 @@ const dotenv = require("dotenv").config();
 const Order = require("./order");
 const { prometheus, middleware } = require("./metrics")
 app.use(bodyParser.json())
-// const { countRequests } = require('./instrumentation');
 
 const startServer = async () => {
     try {
 
-        await mongoose.connect(process.env.mongo_url).then(() => {
+        await mongoose.connect(process.env.MONGO_URI).then(() => {
             console.log("Database connected")
 
         })
@@ -57,10 +56,6 @@ const startServer = async () => {
 
             await Order.findById(req.params.id).then((order) => {
                 if (order) {
-
-                    //console.log("http://ip_address:5555/customer/"+orders.CustomerID);
-                    // res.json(orders);
-
                     axios.get("http://customers:4550/customer/" + order.CustomerID).then((response) => {
 
                         console.log("response from then", response.data);
@@ -77,17 +72,13 @@ const startServer = async () => {
                     res.send("Order not found");
             }).catch(error => {
                 res.send('id doesnt exist')
-                // console.log(error);
-                // if(error)
-                // throw error;
             })
         })
 
-        // startMetricsServer();
         app.get('/metrics', async (req, res) => {
-            const metrics = await prometheus.register.metrics(); // Ensure this call returns a string, not a Promise
+            const metrics = await prometheus.register.metrics(); 
             res.set('Content-Type', prometheus.register.contentType);
-            res.end(metrics); // Send the metrics string directly, without using Promises
+            res.end(metrics); 
           });
 
         app.listen(process.env.PORT, () => {

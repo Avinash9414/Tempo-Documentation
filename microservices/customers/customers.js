@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 const startServer = async () => {
     try {
 
-        await mongoose.connect(process.env.mongo_url).then(() => {
+        await mongoose.connect(process.env.MONGO_URI).then(() => {
             console.log("Database connected")
         })
 
@@ -63,9 +63,6 @@ const startServer = async () => {
                     res.sendStatus(404)
             }).catch(error => {
                 res.send('id doesnt exist')
-                // console.log(error);
-                // if(error)
-                // throw error;
             })
 
         })
@@ -76,17 +73,14 @@ const startServer = async () => {
                 res.send("Customer deleted successfully")
             }).catch(error => {
                 res.send('problem in deleting customer')
-                // console.log(error);
-                // if(error)
-                // throw error;
             })
 
         })
 
         app.get('/metrics', async (req, res) => {
-            const metrics = await prometheus.register.metrics(); // Ensure this call returns a string, not a Promise
+            const metrics = await prometheus.register.metrics(); 
             res.set('Content-Type', prometheus.register.contentType);
-            res.end(metrics); // Send the metrics string directly, without using Promises
+            res.end(metrics);
           });
 
 
