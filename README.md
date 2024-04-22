@@ -44,10 +44,10 @@ Make sure you have Docker and Docker Compose installed on your machine.
    ```
 
 2. **Configure the microservices**:
-    - Please refer to the README.md file in the `/microservices` folder for instructions on how to configure the microservices.
+    - Please refer to the [README.md](/microservices/README.md) file in the `/microservices` folder for instructions on how to configure the microservices.
 
 3. **Configure Tempo, Prometheus and Grafana Alloy as per needs**:
-    - Please refer to the README.md file in the `/configs` folder for instructions on how to configure Tempo, Prometheus and Grafana Alloy.
+    - Please refer to the [README.md](/configs/README.md) file in the `/configs` folder for instructions on how to configure Tempo, Prometheus and Grafana Alloy.
 
 4. **Start the services**:
 
