@@ -69,9 +69,9 @@ const startServer = async () => {
                     })
                 }
                 else
-                    res.send("Order not found");
+                    res.status(404).send("Order not found");
             }).catch(error => {
-                res.send('id doesnt exist')
+                res.status(404).send('id doesnt exist')
             })
         })
 
