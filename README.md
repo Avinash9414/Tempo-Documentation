@@ -66,8 +66,8 @@ Make sure you have Docker and Docker Compose installed on your machine.
     - You will find 2 data sources:
         - `prometheus`
         - `tempo`
-    - Click on the `prometheus` data source and configure the connection url. Replace your IP address with `<YOUR_IP_ADDRESS>`
-    - Click on the `tempo` data source and configure the connection url. Replace your IP address with `<YOUR_IP_ADDRESS>`
+    - Click on the `prometheus` data source and configure the data source as per your needs.
+    - Click on the `tempo` data source and configure the data source as per your needs.
 
 7. **Navigate to Dashboards tab**:
 
