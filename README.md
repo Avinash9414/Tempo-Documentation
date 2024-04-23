@@ -73,14 +73,16 @@ Make sure you have Docker and Docker Compose installed on your machine.
 
 7. **Navigate to Dashboards tab**:
 
-    - You will find 2 dashboards:
+    - You will find 3 dashboards:
         - `NodeJS Application Dashboard for Metrics`
         - `Traces Dashboard`
+        - `Docker monitoring with node selection`
         
     - The first dashboard shows the metrics for the three microservices.
     - The second dashboard shows the traces for the three microservices with a service graph view.
+    - The third dashboard can be used to monitor docker containers.
 
-    **You can use these dashboards to monitor the performance of the three microservices.**:
+    **You can use these dashboards to monitor the performance of the three microservices and docker containers.**:
     - You can also use the Tempo to Metrics feature to view the metrics for the three microservices.
 
 ## Role of Grafana Alloy
