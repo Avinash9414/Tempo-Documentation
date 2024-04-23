@@ -8,9 +8,11 @@ Grafana Tempo is an open source, easy-to-use, and high-scale distributed tracing
 
 ### Why Grafana Tempo?
 
-**Built for massing scale**: The only dependency is object storage which provides affordable long term storage of traces
-**Cost-effective**: Not indexing the traces makes it possible to store orders of magnitude more trace data for the same cost
-**Strong integration with open source tools**: Compatible with open source tracing protocols
+**Built for massing scale**: The only dependency is object storage which provides affordable long term storage of traces.
+
+**Cost-effective**: Not indexing the traces makes it possible to store orders of magnitude more trace data for the same cost.
+
+**Strong integration with open source tools**: Compatible with open source tracing protocols.
 
 ### How does Tempo work?
 
