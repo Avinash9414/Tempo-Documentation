@@ -26,27 +26,19 @@ The Connection String will look like this "mongodb+srv://'username':'password'@'
 
 - PORT
 - MONGO_URI
-- IP_ADDRESS
 
     The .env file should look like this:
     - Example:
     ```
         MONGO_URI='mongodb+srv://<username>:<password>@cluster0.pghegxv.mongodb.net/<databasename>?retryWrites=true&w=majority&appName=Cluster0'
         PORT=4550
-        IP_ADDRESS='<ip_addr>'
     ```
 
 > [!NOTE]
 >   - The PORT variable is used to set the port number for the service.
 >   - The MONGO_URI variable is used to set the mongodb connection string. Define it with the connection string you copied earlier.
->   - The IP_ADDRESS variable is used to set the IP address of the machine where the services are running. Define it with the IP address of the machine where the services are running.
+of the machine where the services are running.
 
-
-To get the ip address of your system run the following command:
-
-```bash
-ipconfig
-```
 
 For simplicity follow the PORT numbers I have used and they are :
 - 4545 : For mobiles service
