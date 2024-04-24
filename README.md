@@ -58,7 +58,7 @@ Make sure you have Docker and Docker Compose installed on your machine.
    docker-compose up -d
    ```
 
-5. **Open Grafana in your browser at http://localhost:3000 and login with the following credentials**:
+5. **Open Grafana in your browser on port 3000 and login with the following credentials**:
 
     - Username: `admin`
     - Password: `admin`
